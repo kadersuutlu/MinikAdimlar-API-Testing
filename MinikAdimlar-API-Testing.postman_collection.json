@@ -301,7 +301,7 @@
 								{
 									"key": "photo",
 									"type": "file",
-									"src": "/C:/Users/Lenovo/OneDrive - ahievran.edu.tr/Resimler/Ekran görüntüleri/Ekran görüntüsü 2025-12-22 230946.png"
+									"src": []
 								}
 							]
 						},
@@ -330,13 +330,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJAZ21haWwuY29tIiwiaWF0IjoxNzY2NDA4MDE1LCJleHAiOjE3NjY0MTE2MTV9.7FWszJDW4zVBoLGZtcrOXJ6hLaINjux-xtVKM2-6VI0",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -364,13 +370,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2Njc2OTUzNSwiZXhwIjoxNzY2NzczMTM1fQ.xzdZjg-amvSsW1fcpjHHiaToYlU10bbaTKGj9_92deI",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/baby/user/1",
 							"host": [
@@ -419,7 +431,7 @@
 								{
 									"key": "photo",
 									"type": "file",
-									"src": "/C:/Users/Lenovo/OneDrive - ahievran.edu.tr/Masaüstü/Kısayollar/Telefon/baba_telefon/Camera/44279bbe78e3051298f187677df80301.jpg"
+									"src": []
 								}
 							]
 						},
@@ -453,13 +465,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxMDE5NSwiZXhwIjoxNzY2NTEzNzk1fQ.hd9NuV39pJife4cH3nFziQYRzrtIWIOETLdieAfRveM",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -493,13 +511,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxMDE5NSwiZXhwIjoxNzY2NTEzNzk1fQ.hd9NuV39pJife4cH3nFziQYRzrtIWIOETLdieAfRveM",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/growth-tracking/weights/babies/1",
 							"host": [
@@ -524,13 +548,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/api/growth-tracking/heads/babies/1",
 							"host": [
@@ -555,13 +585,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"babyId\": 1, \"height\": 10, \"heightDate\": \"2025-12-14T00:00:00Z\" }",
@@ -593,13 +629,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"babyId\": 1, \"weight\": 7.1, \"weightDate\": \"2025-12-14T00:00:00Z\" }",
@@ -631,13 +673,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"value": "{{accessToken}}",
 									"type": "string"
 								}
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \"babyId\": 1, \"headCircumference\": 41.2, \"headCircumferenceDate\": \"2025-12-14T00:00:00Z\" }",
