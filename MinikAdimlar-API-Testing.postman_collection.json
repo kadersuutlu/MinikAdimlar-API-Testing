@@ -264,6 +264,404 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Baby",
+			"item": [
+				{
+					"name": "BABY_ADD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "{\n  \"name\": \"Ali\",\n  \"birthDate\": \"2024-02-15\",\n  \"gender\": \"FEMALE\",\n  \"relationship\": \"MOTHER\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/OneDrive - ahievran.edu.tr/Resimler/Ekran görüntüleri/Ekran görüntüsü 2025-12-22 230946.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/baby/addBaby",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"baby",
+								"addBaby"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BABY_GET",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJAZ21haWwuY29tIiwiaWF0IjoxNzY2NDA4MDE1LCJleHAiOjE3NjY0MTE2MTV9.7FWszJDW4zVBoLGZtcrOXJ6hLaINjux-xtVKM2-6VI0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/baby/getById/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"baby",
+								"getById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BABY_LIST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2Njc2OTUzNSwiZXhwIjoxNzY2NzczMTM1fQ.xzdZjg-amvSsW1fcpjHHiaToYlU10bbaTKGj9_92deI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/baby/user/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"baby",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BABY_UPDATE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{accessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "request",
+									"value": "{\n  \"name\": \"Azra Nur\",\n  \"gender\": \"MALE\",\n  \"birthDate\": \"2025-01-10\",\n\"relationship\":\"MOTHER\"\n}",
+									"contentType": "application/json",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/OneDrive - ahievran.edu.tr/Masaüstü/Kısayollar/Telefon/baba_telefon/Camera/44279bbe78e3051298f187677df80301.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/baby/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"baby",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Growth_Tracking",
+			"item": [
+				{
+					"name": "GROWTH_TRACKING_HEIGHTS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxMDE5NSwiZXhwIjoxNzY2NTEzNzk1fQ.hd9NuV39pJife4cH3nFziQYRzrtIWIOETLdieAfRveM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/heights/babies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"heights",
+								"babies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GROWTH_TRACKING_WEIGHTS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxMDE5NSwiZXhwIjoxNzY2NTEzNzk1fQ.hd9NuV39pJife4cH3nFziQYRzrtIWIOETLdieAfRveM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/weights/babies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"weights",
+								"babies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GROWTH_TRACKING_HEADS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/heads/babies/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"heads",
+								"babies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GROWTH_TRACKING_HEIGHT_ADD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"babyId\": 1, \"height\": 10, \"heightDate\": \"2025-12-14T00:00:00Z\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/height",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"height"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GROWTH_TRACKING_WEIGHT_ADD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"babyId\": 1, \"weight\": 7.1, \"weightDate\": \"2025-12-14T00:00:00Z\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/weight",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"weight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GROWTH_TRACKING_HEADS_ADD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwidG9rZW5UeXBlIjoiYWNjZXNzIiwic3ViIjoia2FkZXJzQGdtYWlsLmNvbSIsImlhdCI6MTc2NjUxNDY3NCwiZXhwIjoxNzY2NTE4Mjc0fQ.npzs3W2Rp5RZ5qgVOlGidKA_10c8NcOXgFooFyYDZdk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"babyId\": 1, \"headCircumference\": 41.2, \"headCircumferenceDate\": \"2025-12-14T00:00:00Z\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/growth-tracking/head-circumference",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"growth-tracking",
+								"head-circumference"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
