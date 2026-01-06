@@ -5,11 +5,11 @@ Bu repository, **Juniors** topluluğu bünyesinde geliştirilen **Minik Adımlar
 ---
 
 ## 📌 Proje Kapsamı ve İlerleme Durumu
-Test süreçleri, uygulamanın iş mantığına (business logic) uygun olarak 6 stratejik faza ayrılmıştır. Her fazın tamamlanmasıyla birlikte ilgili koleksiyonlar repoya eklenecektir:
+Test süreçleri, uygulamanın iş mantığına (business logic) uygun olarak 6 stratejik faza ayrılmıştır:
 
 - [x] **Faz 1: Auth & User Management** (Tamamlandı ✅)
     - *Kullanıcı kayıt, giriş, şifre yenileme ve profil yönetimi süreçleri.*
-- [ ] **Faz 2: Core Data Management (Baby & Growth)** (Yükleniyor... ⏳)
+- [x] **Faz 2: Core Data Management (Baby & Growth)** (Tamamlandı ✅)
     - *Bebek profili oluşturma ve fiziksel gelişim (Boy, Kilo, Baş çevresi) takibi.*
 - [ ] **Faz 3: Daily Activity Tracking** (Planlanıyor 📅)
     - *Beslenme (Emzirme/Biberon), Uyku ve Bez değişimi süreçleri.*
@@ -22,36 +22,31 @@ Test süreçleri, uygulamanın iş mantığına (business logic) uygun olarak 6 
 
 ---
 
-## 🔐 Faz 1 Detayları: Auth & User Management
-Bu aşamada kullanıcının güvenli bir şekilde sisteme dahil olması ve yetkilendirme süreçlerinin hatasız çalışması test edilmiştir.
-
-### Test Edilen Uç Noktalar (Endpoints):
-* `POST /auth/register` - Yeni kullanıcı kaydı ve veri validasyonları.
-* `POST /auth/login` - Giriş işlemleri ve Access Token yönetimi.
-* `POST /auth/refresh-token` - Oturum yenileme senaryoları.
-* `POST /auth/forgot-password` & `POST /auth/reset-password` - Şifre kurtarma akışları.
+## 🔐 Öne Çıkan Teknik Detaylar (Faz 1 & 2)
+Bu aşamalarda API'ların hem güvenliği hem de veri işleme yetenekleri test edilmiştir.
 
 ### Uygulanan Teknik Yetkinlikler:
-* **Dynamic Environment Variables:** Login sonrası alınan `access_token`, Postman scriptleri ile otomatik olarak ortama atanmış ve sonraki tüm isteklere dinamik olarak aktarılmıştır.
-* **Pre-request Scripts:** Test verisi çeşitliliği sağlamak amacıyla JavaScript ile dinamik veri üretimi gerçekleştirilmiştir.
-* **Tests & Assertions:**
-    * **Status Code Validation:** Yanıt kodlarının kontratlara uygunluğu.
-    * **JSON Schema Validation:** Response gövdesinin yapısal doğruluğu.
-    * **Response Time Assertions:** Performans kriterlerinin denetlenmesi.
+* **Dynamic Environment Variables:** Login sonrası alınan `access_token`, Postman scriptleri ile otomatik olarak ortama atanmış ve tüm isteklere dinamik olarak aktarılmıştır.
+* **Complex Data Handling:** Faz 2 kapsamında bebek profili oluşturma ve bu profile bağlı boy/kilo verilerinin ilişkilendirilmesi test edilmiştir.
+* **Pre-request Scripts:** Test verisi çeşitliliği için JavaScript ile dinamik veri (faker benzeri) üretimi yapılmıştır.
+* **Advanced Assertions:** * **JSON Schema Validation:** API yanıtlarının yapısal doğruluğu.
+    * **Performance Testing:** Yanıt sürelerinin belirlenen limitler (ms) altında kalması.
+
+---
+
+## 📱 Roadmap: Phase 2 - Mobile Automation Integration (New! 🚀)
+
+API testlerine paralel olarak projenin mobil ayağı için otomasyon süreci başlatılmıştır. 
+
+* **Altyapı:** Expo projesi native yapıya (`Prebuild`) geçirilerek Android ortamı hazırlandı.
+* **Appium & Inspector:** `UiAutomator2` driver ile emülatör bağlantısı sağlandı, Appium Inspector üzerinden element tespiti ve E2E (uçtan uca) senaryo kurgulama aşamasına geçildi.
 
 ---
 
 ## 🛠 Kullanılan Araçlar
-* **Postman** (API Testing & Documentation)
-* **JavaScript** (Postman Scripting)
-* **Markdown** (Project Documentation)
-
----
-
-## 🚀 Nasıl Çalıştırılır?
-1. Repository içerisindeki `.json` formatındaki koleksiyon dosyasını bilgisayarınıza indirin.
-2. Postman uygulamasını açın ve **Import** butonuna basarak dosyayı seçin.
-3. Testleri çalıştırmak için bir `environment` oluşturup `base_url` tanımlamanız önerilir.
+* **Postman & JavaScript** (API Automation)
+* **Appium & UiAutomator2** (Mobile Automation)
+* **Android Studio & Emulator** (Test Environment)
 
 ---
 > **Not:** Bu çalışma sadece test otomasyon kurgusunu ve QA yetkinliklerini sergilemek amacıyla paylaşılmıştır. Projenin kaynak kodlarını veya hassas kullanıcı verilerini içermez.
