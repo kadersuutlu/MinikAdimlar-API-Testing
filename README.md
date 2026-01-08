@@ -8,26 +8,24 @@ Bu repository, **Juniors** topluluğu bünyesinde geliştirilen **Minik Adımlar
 Test süreçleri, uygulamanın iş mantığına (business logic) uygun olarak 6 stratejik faza ayrılmıştır:
 
 - [x] **Faz 1: Auth & User Management** (Tamamlandı ✅)
-    - *Kullanıcı kayıt, giriş, şifre yenileme ve profil yönetimi süreçleri.*
 - [x] **Faz 2: Core Data Management (Baby & Growth)** (Tamamlandı ✅)
-    - *Bebek profili oluşturma ve fiziksel gelişim (Boy, Kilo, Baş çevresi) takibi.*
-- [ ] **Faz 3: Daily Activity Tracking (Nutrition, Sleep, Diaper)** (Planlanıyor 📅)
-- [ ] **Faz 4: Health & Medical Logging** (Planlanıyor 📅)
+- [x] **Faz 3: Daily Activity Tracking (Nutrition, Sleep, Diaper)** (Tamamlandı ✅)
+- [x] **Faz 4: Health & Medical Logging** (Tamamlandı ✅)
 - [ ] **Faz 5: Content & Educational Services** (Planlanıyor 📅)
 - [ ] **Faz 6: Smart Services & Reporting** (Planlanıyor 📅)
 
 ---
 
-## 🔐 Öne Çıkan Teknik Detaylar (Faz 1 & 2)
-Bu aşamalarda API'ların hem güvenliği hem de veri işleme yetenekleri test edilmiştir.
+## 🔐 Öne Çıkan Teknik Detaylar (Faz 1 - 4)
+Bu aşamalarda API'ların güvenliği, iş mantığı (business logic) ve veri tutarlılığı uçtan uca test edilmiştir.
 
 ### Uygulanan Teknik Yetkinlikler:
-* **Dynamic Environment Variables:** Login sonrası alınan `accessToken` ve `refreshToken`, Postman scriptleri (`pm.environment.set`) ile otomatik olarak ortama atanmış ve tüm yetkilendirme gerektiren isteklere dinamik olarak aktarılmıştır.
-* **Complex Data Handling:** Faz 2 kapsamında bebek profili oluşturma ve bu profile bağlı boy/kilo verilerinin ilişkilendirilmesi test edilmiştir.
-* **Pre-request Scripts:** Test verisi çeşitliliği sağlamak amacıyla JavaScript ile dinamik veri (random mail, name vb.) üretimi yapılmıştır.
-* **Advanced Assertions:** * **JSON Schema Validation:** API yanıtlarının yapısal ve tip bazlı doğruluğu.
-    * **Status Code & Performance:** Yanıt kodlarının kontratlara uygunluğu ve yanıt sürelerinin (ms) denetlenmesi.
-
+* **Dynamic Token Management:** Login sonrası alınan `accessToken` ve `refreshToken` değerleri, Postman scriptleri ile otomatik olarak ortama atanmış; oturum yenileme (Refresh Token) akışları dinamik değişkenlerle otomatize edilmiştir.
+* **End-to-End Activity Tracking:** Faz 3 & 4 kapsamında beslenme, uyku, bez değişimi ve sağlık kayıtlarının birbiriyle ilişkili çalışma mantığı (CRUD operasyonları) test edilmiştir.
+* **Bug Detection & Documentation:** Yapılan testler sonucunda; boş veri setlerinde 400 hatası dönmesi, yetki kontrollerindeki (401 vs 403) tutarsızlıklar ve hatalı iş mantığı (aktif kayıt varken yeni kayıt başlatılabilmesi) gibi kritik bulgular tespit edilmiş ve detaylıca raporlanmıştır.
+* **Advanced Data Validation:** * **JSON Schema Validation:** API yanıtlarının veri tipleri ve yapısal doğruluğu denetlenmiştir.
+    * **Boundary Value Analysis:** Negatif test senaryoları ile (geçersiz tarih, hatalı enum, negatif değerler) sistemin dayanıklılığı ölçülmüştür.
+* **Pre-request & Post-res Scripts:** JavaScript kullanılarak dinamik test verisi üretilmiş ve her istek sonrası otomatik statü kodu kontrolleri yapılmıştır.
 ---
 
 ## 🛠 Kullanılan Araçlar
