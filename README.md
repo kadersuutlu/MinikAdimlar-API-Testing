@@ -1,36 +1,41 @@
 # Minik Adımlar - API Test Automation Project 🛠️
 
-Bu repository, **Juniors** topluluğu bünyesinde geliştirilen **Minik Adımlar** (Bebek Gelişim Takip Uygulaması) projesinin backend servisleri için hazırladığım kapsamlı test süreçlerini içermektedir. Proje, manuel testlerden otomasyona geçiş sürecini ve profesyonel bir API test mimarisinin nasıl kurgulandığını sergilemek amacıyla hazırlanmıştır.
+Bu repository, **Juniors** topluluğu bünyesinde geliştirilen **Minik Adımlar** (Bebek Gelişim Takip Uygulaması) projesinin tüm backend servisleri (Faz 1 - 6) için hazırladığım uçtan uca test otomasyon sürecini içermektedir. Proje, manuel testlerden otomasyona geçişi ve kapsamlı bir test mimarisinin nasıl kurgulandığını sergilemektedir.
 
 ---
 
 ## 📌 Proje Kapsamı ve İlerleme Durumu
-Test süreçleri, uygulamanın iş mantığına (business logic) uygun olarak 6 stratejik faza ayrılmıştır:
+Uygulamanın tüm iş mantığı (business logic) başarıyla test edilmiş ve otomatize edilmiştir:
 
 - [x] **Faz 1: Auth & User Management** (Tamamlandı ✅)
 - [x] **Faz 2: Core Data Management (Baby & Growth)** (Tamamlandı ✅)
 - [x] **Faz 3: Daily Activity Tracking (Nutrition, Sleep, Diaper)** (Tamamlandı ✅)
 - [x] **Faz 4: Health & Medical Logging** (Tamamlandı ✅)
-- [ ] **Faz 5: Content & Educational Services** (Planlanıyor 📅)
-- [ ] **Faz 6: Smart Services & Reporting** (Planlanıyor 📅)
+- [x] **Faz 5: Content & Educational Services** (Tamamlandı ✅)
+- [x] **Faz 6: Smart Services & Reporting (Events, Calendar, Recap)** (Tamamlandı ✅)
 
 ---
 
-## 🔐 Öne Çıkan Teknik Detaylar (Faz 1 - 4)
-Bu aşamalarda API'ların güvenliği, iş mantığı (business logic) ve veri tutarlılığı uçtan uca test edilmiştir.
+## 🔐 Teknik Yetkinlikler ve QA Yaklaşımı
+Bu projede API'ların güvenliği, performansı ve veri tutarlılığı şu tekniklerle denetlenmiştir:
 
-### Uygulanan Teknik Yetkinlikler:
-* **Dynamic Token Management:** Login sonrası alınan `accessToken` ve `refreshToken` değerleri, Postman scriptleri ile otomatik olarak ortama atanmış; oturum yenileme (Refresh Token) akışları dinamik değişkenlerle otomatize edilmiştir.
-* **End-to-End Activity Tracking:** Faz 3 & 4 kapsamında beslenme, uyku, bez değişimi ve sağlık kayıtlarının birbiriyle ilişkili çalışma mantığı (CRUD operasyonları) test edilmiştir.
-* **Bug Detection & Documentation:** Yapılan testler sonucunda; boş veri setlerinde 400 hatası dönmesi, yetki kontrollerindeki (401 vs 403) tutarsızlıklar ve hatalı iş mantığı (aktif kayıt varken yeni kayıt başlatılabilmesi) gibi kritik bulgular tespit edilmiş ve detaylıca raporlanmıştır.
-* **Advanced Data Validation:** * **JSON Schema Validation:** API yanıtlarının veri tipleri ve yapısal doğruluğu denetlenmiştir.
-    * **Boundary Value Analysis:** Negatif test senaryoları ile (geçersiz tarih, hatalı enum, negatif değerler) sistemin dayanıklılığı ölçülmüştür.
-* **Pre-request & Post-res Scripts:** JavaScript kullanılarak dinamik test verisi üretilmiş ve her istek sonrası otomatik statü kodu kontrolleri yapılmıştır.
+* **Dynamic Token Management:** `accessToken` ve `refreshToken` yönetimi Postman scriptleri ile tam otomatize edilmiş, oturum sürekliliği dinamik değişkenlerle sağlanmıştır.
+* **Full API Coverage:** 13 farklı modülde 100'den fazla test senaryosu ile uçtan uca kapsayıcılık sağlanmıştır.
+* **Bug Detection & Analysis:** Test süreçlerinde; boş veri setleri, yetki kontrolleri (401/403) ve iş mantığı hataları tespit edilerek teknik bulgular raporlanmıştır.
+* **Advanced Automation:** JSON Schema Validation, Boundary Value Analysis ve Pre-request Scripting (dinamik veri üretimi) teknikleri uygulanmıştır.
+
+---
+
+## 📊 Test Documentation & Management
+Projenin tüm test senaryoları; negatif senaryolar, sınır değer analizleri ve beklenen sonuçlar ile birlikte profesyonel bir dökümantasyon yapısında takip edilmektedir. 
+
+> **Not:** Gizlilik ve topluluk kuralları gereği, hazırlanan detaylı test dökümanı bu repository üzerinde paylaşılmamıştır.
+
 ---
 
 ## 🛠 Kullanılan Araçlar
 * **Postman** (API Automation)
-* **JavaScript** (Scripting & Assertions)
+* **JavaScript** (Assertions & Scripting)
 * **Markdown** (Documentation)
 
 ---
