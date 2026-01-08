@@ -1,8 +1,11 @@
 # Minik Adımlar - API Test Automation Project 🛠️
 
 Bu repository, **Juniors** topluluğu bünyesinde geliştirilen **Minik Adımlar** (Bebek Gelişim Takip Uygulaması) projesinin tüm backend servisleri (Faz 1 - 6) için hazırladığım uçtan uca test otomasyon sürecini içermektedir. Proje, manuel testlerden otomasyona geçişi ve kapsamlı bir test mimarisinin nasıl kurgulandığını sergilemektedir.
-
 ---
+
+<p align="center">
+  <img src="assets/app.png" alt="Proje Görseli" width="300">
+</p>
 
 ## 📌 Proje Kapsamı ve İlerleme Durumu
 Uygulamanın tüm iş mantığı (business logic) başarıyla test edilmiş ve otomatize edilmiştir:
