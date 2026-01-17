@@ -1,2284 +1,2050 @@
 {
-	"info": {
-		"_postman_id": "fb82e0f8-272b-4184-8b4a-c2fc945d961a",
-		"name": "MinikAdimlar-API-Testing",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "36627351",
-		"_collection_link": "https://minikadimlar.postman.co/workspace/MinikAdimlar-Backend-API-Tests~9ddeeeae-58fc-45c5-831c-a1620d59ec2e/collection/36627351-fb82e0f8-272b-4184-8b4a-c2fc945d961a?action=share&source=collection_link&creator=36627351"
-	},
-	"item": [
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "AUTH-REGISTER",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"userName\": \"kadersu\",\r\n  \"email\": \"kaders@gmail.com\",\r\n  \"password\": \"Kader123\",\r\n  \"phoneNumber\": \"+905551112233\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/register",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AUTH-LOGIN",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set(\r",
-									"    \"accessToken\",\r",
-									"    pm.response.json().accessToken\r",
-									");\r",
-									"\r",
-									"pm.environment.set(\r",
-									"    \"refreshToken\",\r",
-									"    pm.response.json().refreshToken\r",
-									");"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"kaders@gmail.com\",\r\n  \"password\": \"Kader123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/login",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AUTH_REFRESH_TOKEN",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"refreshToken\": \"{{refreshToken}}\"\r\n }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/refresh",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"refresh"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AUTH_FORGOT_PASSWORD",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"kadersutlu34@gmail.com\"\r\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/forgot-password",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"forgot-password"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AUTH_RESET_PASSWORD",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"token\": {{refreshToken}}, \r\n    \"newPassword\": \"NewP@ss1\", \r\n    \"confirmPassword\": \"NewP@ss1\" \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/reset-password",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"reset-password"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "AUTH_CHANGE_PASSWORD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \r\n    \"currentPassword\": \"NewP@ss1\", \r\n    \"newPassword\": \"StrongP@ss1\", \r\n    \"confirmPassword\": \"StrongP@ss1\" \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/auth/change-password",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"change-password"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Baby",
-			"item": [
-				{
-					"name": "BABY_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "request",
-									"value": "{\n  \"name\": \"Ali\",\n  \"birthDate\": \"2024-02-15\",\n  \"gender\": \"FEMALE\",\n  \"relationship\": \"MOTHER\"\n}",
-									"contentType": "application/json",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/baby/addBaby",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"baby",
-								"addBaby"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "BABY_GET",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/baby/getById/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"baby",
-								"getById",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "BABY_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/baby/user/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"baby",
-								"user",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "BABY_UPDATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "request",
-									"value": "{\n  \"name\": \"Azra Nur\",\n  \"gender\": \"MALE\",\n  \"birthDate\": \"2025-01-10\",\n\"relationship\":\"MOTHER\"\n}",
-									"contentType": "application/json",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/baby/8",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"baby",
-								"8"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Growth_Tracking",
-			"item": [
-				{
-					"name": "GROWTH_TRACKING_HEIGHTS",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/heights/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"heights",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GROWTH_TRACKING_WEIGHTS",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/weights/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"weights",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GROWTH_TRACKING_HEADS",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/heads/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"heads",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GROWTH_TRACKING_HEIGHT_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"height\": 10, \"heightDate\": \"2025-12-14T00:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/height",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"height"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GROWTH_TRACKING_WEIGHT_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"weight\": 7.1, \"weightDate\": \"2025-12-14T00:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/weight",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"weight"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GROWTH_TRACKING_HEADS_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"headCircumference\": 41.2, \"headCircumferenceDate\": \"2025-12-14T00:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/growth-tracking/head-circumference",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"growth-tracking",
-								"head-circumference"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Sleep_Tracking",
-			"item": [
-				{
-					"name": "SLLEP_TRACKING_LIST",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/sleep-tracking/babies/2",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"sleep-tracking",
-								"babies",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SLEEP_TRACKING_DATE",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/sleep-tracking/babies/99/by-date?date=2025-12-22",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"sleep-tracking",
-								"babies",
-								"99",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SLEEP_TRACKING_MANUAL",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-22T11:37:56.023Z\", \"endedAt\": \"2025-12-22T12:15:56.023Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/sleep-tracking/manual",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"sleep-tracking",
-								"manual"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SLEEP_TRACKING_START",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"babyId\": 1,\r\n  \"startedAt\": \"2025-12-22T16:37:56.023Z\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/sleep-tracking/start",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"sleep-tracking",
-								"start"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SLEEP_TRACKING_END",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"id\": 1,\r\n  \"endedAt\": \"2025-12-22T19:37:56.023Z\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/sleep-tracking/end",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"sleep-tracking",
-								"end"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Nutrition_Tracking",
-			"item": [
-				{
-					"name": "NUTRITION_TRACKING_LIST",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/babies/2",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"babies",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NUTRITION_TRACKING_DATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/babies/1/by-date?date=2025-12-22",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"babies",
-								"1",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NUTRITION_TRACKING_BOTTLE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:00:00Z\", \"amountMl\": -120 }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/bottle/manual",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"bottle",
-								"manual"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NUTRITION_TRACKING_BREAST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:30:00Z\", \"endedAt\": \"2025-12-14T12:50:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/breast/manual",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"breast",
-								"manual"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NUTRITION_TRACKING_BREAST_START",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:00:00Z\", \"side\": \"LEFT\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/breast/start",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"breast",
-								"start"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "NUTRITION_TRACKING_BREAST_END",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"id\": 16, \"endedAt\": \"2025-12-14T12:20:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/nutrition-tracking/breast/end",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"nutrition-tracking",
-								"breast",
-								"end"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Diaper_Tracking",
-			"item": [
-				{
-					"name": "DIAPER_TRACKING_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/diaper-tracking/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"diaper-tracking",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DIAPER_TRACKING_DATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/diaper-tracking/babies/1/by-date?date=2025-12-22",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"diaper-tracking",
-								"babies",
-								"1",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-22"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DIAPER_TRACKING_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"date\": \"2025-12-23T09:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/diaper-tracking/add-diaper-tracking",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"diaper-tracking",
-								"add-diaper-tracking"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Health_Tracking",
-			"item": [
-				{
-					"name": "HEALTH_TRACKING",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 1, \"category\": \"vaccine\", \"trackingDate\": \"2025-12-14T09:00:00Z\", \"notes\": \"1. doz\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/health-tracking",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"health-tracking"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "HEALTH_TRACKING_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/health-tracking/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"health-tracking",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "HEALTH_TRACKING_CATEGORIES",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/health-tracking/babies/1/by-category?category=vaccine",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"health-tracking",
-								"babies",
-								"1",
-								"by-category"
-							],
-							"query": [
-								{
-									"key": "category",
-									"value": "vaccine"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "First_Moments",
-			"item": [
-				{
-					"name": "FIRST_MOMENTS_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "request",
-									"value": "{ \"babyId\": 1, \"title\": \"İlk Adım\", \"notes\": \"12. hafta\", \"date\": \"2025-12-14T00:00:00Z\" }",
-									"contentType": "application/json",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/first-moments",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"first-moments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FIRST_MOMENTS_UPDATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "request",
-									"value": "{ \"title\": \"İlk Kahkaha\", \"notes\": \"10. hafta\", \"date\": \"2025-12-21T00:00:00Z\" }",
-									"contentType": "application/json",
-									"type": "text"
-								},
-								{
-									"key": "photo",
-									"type": "file",
-									"src": []
-								}
-							]
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/first-moments/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"first-moments",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FIRST_MOMENTS_BABY_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/first-moments/babies/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"first-moments",
-								"babies",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Content",
-			"item": [
-				{
-					"name": "CONTENT_DETAIL",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/content/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"content",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CONTENT_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/content",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"content"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CONTENT_LIST_BY_AUDIENCE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/content/by-audience?audience=BABY",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"content",
-								"by-audience"
-							],
-							"query": [
-								{
-									"key": "audience",
-									"value": "BABY"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CONTENT_LIST_SEARCH",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/content/search?keyword=",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"content",
-								"search"
-							],
-							"query": [
-								{
-									"key": "keyword",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Reading_List",
-			"item": [
-				{
-					"name": "READING_LIST_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"userId\": 1, \"contentId\": 1 }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/reading-list",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"reading-list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "READING_LIST_DELETE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"userId\": 1, \"contentId\": 1 }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/reading-list",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"reading-list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "READING_LIST_AUDIENCE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/reading-list?userId=1&audience=BABY",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"reading-list"
-							],
-							"query": [
-								{
-									"key": "userId",
-									"value": "1"
-								},
-								{
-									"key": "audience",
-									"value": "BABY"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Events",
-			"item": [
-				{
-					"name": "EVENTS_ADD",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 5, \"title\": \"Aşı Randevusu\", \"notes\": \"3. ay kontrol\", \"date\": \"2025-12-25T09:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/events/appointments",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"appointments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EVENTS_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/events/appointments/babies/6",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"appointments",
-								"babies",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EVENT_LIST_DATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/events/appointments/babies/5/by-date?date=2025-12-14",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"appointments",
-								"babies",
-								"5",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-14"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EVENTS_REMINDER",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \"babyId\": 5, \"title\": \"D Vitamini\", \"notes\": \"Her pazar\", \"date\": \"2025-12-14T08:00:00Z\" }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/events/reminders",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"reminders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EVENTS_REMINDER_LIST",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/events/reminders/babies/5",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"reminders",
-								"babies",
-								"5"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "EVENTS_REMINDER_LIST_DATE",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/events/reminders/babies/5/by-date?date=2025-12-14",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"events",
-								"reminders",
-								"babies",
-								"5",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-14"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Calendar",
-			"item": [
-				{
-					"name": "CALENDAR",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/calendar/babies/1/by-date?date=2025-12-14",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"calendar",
-								"babies",
-								"1",
-								"by-date"
-							],
-							"query": [
-								{
-									"key": "date",
-									"value": "2025-12-14"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Recap",
-			"item": [
-				{
-					"name": "RECAP",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{accessToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{accessToken}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/api/recap/babies/1?months=0",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"recap",
-								"babies",
-								"1"
-							],
-							"query": [
-								{
-									"key": "months",
-									"value": "0"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "fb82e0f8-272b-4184-8b4a-c2fc945d961a",
+    "name": "MinikAdimlar-API-Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36627351",
+    "_collection_link": "https://go.postman.co/collection/36627351-fb82e0f8-272b-4184-8b4a-c2fc945d961a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "AUTH-REGISTER",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const randomEmail = pm.variables.replaceIn('{{$randomEmail}}');\r",
+                  "\r",
+                  "pm.environment.set(\"current_email\", randomEmail);\r",
+                  "\r",
+                  "pm.environment.set(\"user_password\", \"P@assword1\");\r",
+                  "\r",
+                  "pm.environment.set(\"new_password_variable\", \"NewStrongP@ss123\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userName\": \"{{$randomUserName}}\",\r\n  \"email\": \"{{current_email}}\",\r\n  \"password\": \"{{user_password}}\",\r\n  \"phoneNumber\": \"+905213568978\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AUTH-LOGIN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\r",
+                  "    \"accessToken\",\r",
+                  "    pm.response.json().accessToken\r",
+                  ");\r",
+                  "\r",
+                  "pm.environment.set(\r",
+                  "    \"refreshToken\",\r",
+                  "    pm.response.json().refreshToken\r",
+                  ");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{current_email}}\",\r\n  \"password\": \"{{user_password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AUTH_REFRESH_TOKEN",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AUTH_FORGOT_PASSWORD",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"{{current_email}}\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/forgot-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AUTH_RESET_PASSWORD",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "pm.environment.set(\"reset_password_temp\", \"NewP@ss1\");"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"token\": \"resetToken\", //Kullanıcı emailindeki token\r\n    \"newPassword\": \"{{new_password_variable}}\", \r\n    \"confirmPassword\": \"{{new_password_variable}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/reset-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "reset-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AUTH_CHANGE_PASSWORD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"currentPassword\": \"{{user_password}}\", \r\n    \"newPassword\": \"{{new_password_variable}}\", \r\n    \"confirmPassword\": \"{{new_password_variable}}\" \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "change-password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Baby",
+      "item": [
+        {
+          "name": "BABY_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "type": "text",
+                  "uuid": "9a4605a4-84ed-43e0-8da2-9e60587ea56a",
+                  "value": "{\n  \"name\": \"Ali\",\n  \"birthDate\": \"2024-02-15\",\n  \"gender\": \"FEMALE\",\n  \"relationship\": \"MOTHER\"\n}",
+                  "contentType": "application/json"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "f4b4037a-788d-4826-bb4f-cf960dac5422",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/baby/addBaby",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "baby",
+                "addBaby"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BABY_GET",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/baby/getById/11",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "baby",
+                "getById",
+                "11"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BABY_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/baby/user/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "baby",
+                "user",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BABY_UPDATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "value": "{\n  \"name\": \"Azra Nur\",\n  \"gender\": \"MALE\",\n  \"birthDate\": \"2025-01-10\",\n\"relationship\":\"MOTHER\"\n}",
+                  "type": "text",
+                  "uuid": "8ce320c8-876d-483a-b23f-c641ce46c64f",
+                  "contentType": "application/json"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "552a6e09-0ea3-4d02-85f7-31f98d11592f",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/baby/8",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "baby",
+                "8"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Growth_Tracking",
+      "item": [
+        {
+          "name": "GROWTH_TRACKING_HEIGHTS",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/heights/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "heights",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GROWTH_TRACKING_WEIGHTS",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/weights/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "weights",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GROWTH_TRACKING_HEADS",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/heads/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "heads",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GROWTH_TRACKING_HEIGHT_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"height\": 10, \"heightDate\": \"2025-12-14T00:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/height",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "height"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GROWTH_TRACKING_WEIGHT_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"weight\": 7.1, \"weightDate\": \"2025-12-14T00:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/weight",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "weight"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GROWTH_TRACKING_HEADS_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"headCircumference\": 41.2, \"headCircumferenceDate\": \"2025-12-14T00:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/growth-tracking/head-circumference",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "growth-tracking",
+                "head-circumference"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sleep_Tracking",
+      "item": [
+        {
+          "name": "SLLEP_TRACKING_LIST",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sleep-tracking/babies/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sleep-tracking",
+                "babies",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SLEEP_TRACKING_DATE",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sleep-tracking/babies/99/by-date?date=2025-12-22",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sleep-tracking",
+                "babies",
+                "99",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-22"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SLEEP_TRACKING_MANUAL",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-22T11:37:56.023Z\", \"endedAt\": \"2025-12-22T12:15:56.023Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sleep-tracking/manual",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sleep-tracking",
+                "manual"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SLEEP_TRACKING_START",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"babyId\": 1,\r\n  \"startedAt\": \"2025-12-22T16:37:56.023Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sleep-tracking/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sleep-tracking",
+                "start"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SLEEP_TRACKING_END",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": 1,\r\n  \"endedAt\": \"2025-12-22T19:37:56.023Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sleep-tracking/end",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "sleep-tracking",
+                "end"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Nutrition_Tracking",
+      "item": [
+        {
+          "name": "NUTRITION_TRACKING_LIST",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/babies/2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "babies",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NUTRITION_TRACKING_DATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/babies/1/by-date?date=2025-12-22",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "babies",
+                "1",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-22"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NUTRITION_TRACKING_BOTTLE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:00:00Z\", \"amountMl\": -120 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/bottle/manual",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "bottle",
+                "manual"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NUTRITION_TRACKING_BREAST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:30:00Z\", \"endedAt\": \"2025-12-14T12:50:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/breast/manual",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "breast",
+                "manual"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NUTRITION_TRACKING_BREAST_START",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"startedAt\": \"2025-12-14T12:00:00Z\", \"side\": \"LEFT\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/breast/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "breast",
+                "start"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "NUTRITION_TRACKING_BREAST_END",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"id\": 16, \"endedAt\": \"2025-12-14T12:20:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/nutrition-tracking/breast/end",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "nutrition-tracking",
+                "breast",
+                "end"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Diaper_Tracking",
+      "item": [
+        {
+          "name": "DIAPER_TRACKING_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/diaper-tracking/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "diaper-tracking",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DIAPER_TRACKING_DATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/diaper-tracking/babies/1/by-date?date=2025-12-22",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "diaper-tracking",
+                "babies",
+                "1",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-22"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DIAPER_TRACKING_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"date\": \"2025-12-23T09:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/diaper-tracking/add-diaper-tracking",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "diaper-tracking",
+                "add-diaper-tracking"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health_Tracking",
+      "item": [
+        {
+          "name": "HEALTH_TRACKING",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 1, \"category\": \"vaccine\", \"trackingDate\": \"2025-12-14T09:00:00Z\", \"notes\": \"1. doz\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/health-tracking",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health-tracking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "HEALTH_TRACKING_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health-tracking/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health-tracking",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "HEALTH_TRACKING_CATEGORIES",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health-tracking/babies/1/by-category?category=vaccine",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health-tracking",
+                "babies",
+                "1",
+                "by-category"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "vaccine"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "First_Moments",
+      "item": [
+        {
+          "name": "FIRST_MOMENTS_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "value": "{ \"babyId\": 1, \"title\": \"İlk Adım\", \"notes\": \"12. hafta\", \"date\": \"2025-12-14T00:00:00Z\" }",
+                  "type": "text",
+                  "uuid": "c6b17589-a90e-4968-be37-4ee2b5f1c9b8",
+                  "contentType": "application/json"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "556eb5bd-4523-4da5-b7f7-349573e427e8",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/first-moments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "first-moments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FIRST_MOMENTS_UPDATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "request",
+                  "value": "{ \"title\": \"İlk Kahkaha\", \"notes\": \"10. hafta\", \"date\": \"2025-12-21T00:00:00Z\" }",
+                  "type": "text",
+                  "uuid": "c6b17589-a90e-4968-be37-4ee2b5f1c9b8",
+                  "contentType": "application/json"
+                },
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "556eb5bd-4523-4da5-b7f7-349573e427e8",
+                  "value": null
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/first-moments/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "first-moments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FIRST_MOMENTS_BABY_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/first-moments/babies/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "first-moments",
+                "babies",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "item": [
+        {
+          "name": "CONTENT_DETAIL",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "content",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CONTENT_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "content"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CONTENT_LIST_BY_AUDIENCE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content/by-audience?audience=BABY",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "content",
+                "by-audience"
+              ],
+              "query": [
+                {
+                  "key": "audience",
+                  "value": "BABY"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CONTENT_LIST_SEARCH",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content/search?keyword=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "content",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reading_List",
+      "item": [
+        {
+          "name": "READING_LIST_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"userId\": 1, \"contentId\": 1 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/reading-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reading-list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "READING_LIST_DELETE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"userId\": 1, \"contentId\": 1 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/reading-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reading-list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "READING_LIST_AUDIENCE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reading-list?userId=1&audience=BABY",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reading-list"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                },
+                {
+                  "key": "audience",
+                  "value": "BABY"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "EVENTS_ADD",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 5, \"title\": \"Aşı Randevusu\", \"notes\": \"3. ay kontrol\", \"date\": \"2025-12-25T09:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/appointments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "appointments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EVENTS_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events/appointments/babies/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "appointments",
+                "babies",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EVENT_LIST_DATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events/appointments/babies/5/by-date?date=2025-12-14",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "appointments",
+                "babies",
+                "5",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-14"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EVENTS_REMINDER",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"babyId\": 5, \"title\": \"D Vitamini\", \"notes\": \"Her pazar\", \"date\": \"2025-12-14T08:00:00Z\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/reminders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "reminders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EVENTS_REMINDER_LIST",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events/reminders/babies/5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "reminders",
+                "babies",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EVENTS_REMINDER_LIST_DATE",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/events/reminders/babies/5/by-date?date=2025-12-14",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "reminders",
+                "babies",
+                "5",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-14"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Calendar",
+      "item": [
+        {
+          "name": "CALENDAR",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/calendar/babies/1/by-date?date=2025-12-14",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "calendar",
+                "babies",
+                "1",
+                "by-date"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2025-12-14"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Recap",
+      "item": [
+        {
+          "name": "RECAP",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/recap/babies/1?months=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "recap",
+                "babies",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "months",
+                  "value": "0"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
 }
